@@ -19,8 +19,10 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.users.beans.User;
 import com.users.beans.UserImage;
+import com.users.repositories.ContactRepository;
 import com.users.repositories.UserImageRepository;
 import com.users.repositories.UserRepository;
+import com.users.security.PermissionService;
 
 @Controller
 public class IndexController {
@@ -31,6 +33,11 @@ public class IndexController {
 
 	@Autowired
 	private UserImageRepository userImageRepo;
+	
+	@Autowired
+	private PermissionService permissionService;
+	
+
 
 	@RequestMapping("/greeting")
 	public String greeting(@RequestParam(value = "name", required = false, defaultValue = "World") String name, Model model) {
